@@ -1,0 +1,62 @@
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: #333;
+}
+nav ul li {
+  flex: 1;
+}
+nav ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+nav ul li a:hover,
+.active {
+  background-color: #575757;
+}
+.content {
+  flex: 1;
+  padding: 20px;
+}
+main {
+  display: flex;
+  flex: 1; /* A main kitölti a fennmaradó helyet */
+  margin-bottom: 20px;
+  gap: 20px;
+}
+article,
+aside {
+  background-color: white;
+  padding: 20px;
+  /* border: 1px solid #ddd;  Világos szürke keret */
+  border-radius: 8px; /* Lekerekített sarkok */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Alig látható árnyék */
+}
+
+article {
+  width: 75%;
+  padding: 10px;
+  overflow-y: auto; /* Ha szükséges, görgethetővé válik */
+  margin-top: 10px;
+  height: 100%;
+}
+aside {
+  width: 20%;
+  padding: 10px;
+  height: 100%; /* Az oldalsáv magassága 100% legyen */
+  overflow-y: auto; /* Görgetés, ha szükséges */
+  margin-left: 20px;
+  margin-top: 10px;
+}
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+}

@@ -1,14 +1,106 @@
 <!DOCTYPE html>
 <html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <title>Web-programozás Főlap</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Web-programozás Főlap</title> 
-</head>
-
-<body>
-    
-</body>
+  <body>
+    <header>
+      <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Főoldal</a></li>
+        <li><a href="pages/tablazat.html">Táblázat</a></li>
+        <li><a href="pages/html5.html">HTML5</a></li>
+        <li><a href="pages/chartjs.html">ChartJs</a></li>
+        <li><a href="pages/ajax.html">AJAX</a></li>
+        <li><a href="pages/oojs.html">OOJS</a></li>
+      </ul>
+    </nav>
+    <main>
+      <aside>
+        <h2 style="margin-bottom: 10px">Beadandó</h2>
+        <p>
+          Egy többlapos, több feladatos web site elkészítése a 2024-25 tanév
+          FOSZK Szoftvertervező mérnök levelezős szakon
+        </p>
+      </aside>
+      <article>
+        <h2 style="margin-bottom: 10px">Feladatrészek és leírásuk</h2>
+        <p><b>1.</b></p>
+        <p>
+          Készítsen több állományból álló <b>egységesen megjelenő</b> honlapot
+          vízszintes menüvel. Kiinduló állomány: <b>index.html</b> Az oldal
+          struktúrája minden oldalon ugyanaz legyen: header, footer, aside, nav,
+          div-content, A div-content (tartalmi) rész az, ami oldalanként egyedi.
+          A menüsoron jelölje, hogy melyik az aktív (kiválasztott) menü.
+          Fejlécbe írassa ki H1-es címsorral:
+          <b>Web-programozás-1 Előadás Házi feladat</b>
+          Láblécbe írja be az elkészítők nevét és Neptun kódját.
+        </p>
+        <hr />
+        <p><b>2.</b></p>
+        <p>
+          <b>Táblázat menü: </b>
+          - CRUD funkcionalitás (Create, Read, Update, Delete) megvalósítása
+          táblázattal - legalább 4x4-es táblázat - legyen validáció minden
+          mezőre pl. kötelező, min, max hossz - A táblázatot lehessen rendezni
+          bármelyik oszlop alapján - A táblázatban lehessen szűrni/keresni
+          bármelyik oszlop alapján
+        </p>
+        <hr />
+        <p><b>3.</b></p>
+        <p>
+          <b>HTML5 menü</b>
+          Készítsen a következő témákhoz 1-1 kis példát: Web Storage, Web
+          Workers, Server-Sent Events, Geolocation API, Drag and drop API,
+          Canvas, SVG A példákat elkészítheti egy oldalra is, vagy használhat
+          almenüket is.
+        </p>
+        <hr />
+        <p><b>4.</b></p>
+        <p>
+          <b>ChartJS menü</b>
+          Tegyen az oldalra legalább 5x5-ös számokat tartalmazó táblázatot. A
+          táblázat bármelyik sorát kiválasztva ábrázolja az adatokat
+          vonaldiagramon a táblázat alatt. Javasolt diagram:
+          https://www.chartjs.org/
+        </p>
+        <hr />
+        <p><b>5.</b></p>
+        <p>
+          <b>AJAX menü </b>
+          A dokumentum végénél az API specifikációnál talál leírást az API-ról,
+          amit fel kell használni a feladathoz. Ellenőrizze cURL-el és
+          Postman-al, hogy jól működnek-e a CRUD funkciók. Az ellenőrzés
+          lépéseit mutassa be a dokumentációban is. A következő fájlokat kell
+          elkészíteni: ajax.html, ajax.js A Read funkciónál írassa ki az adott
+          kódhoz tartozó adatokat egymás alá. Majd utána írassa ki a height
+          értékekről: összeg, átlag, legnagyobb. A Create és Update funkcióknál
+          a beviteli mező nem lehetnek üresek és max 30 karakter értéket
+          tartalmazhatnak. Ezeket ellenőrizze a JS fájlban (validation). Az
+          Update résznél legyen egy beviteli mező, amibe beírjuk az ID-t, és egy
+          getDataForId gomb, amivel először kiolvastatjuk az adatokat beviteli
+          mezőkbe, ahol módosíthatjuk azokat. A Create, Update, Delete műveletek
+          sikerességéről adjunk visszajelzést a weboldalon.
+        </p>
+        <hr />
+        <p><b>6.</b></p>
+        <p>
+          <b>OOJS menü </b>
+          Készítsen egy szabadon választott Objektumorientált JavaScript
+          alkalmazást. Alkalmazza a következőket: class, constructor, metódusok,
+          document.body.appendChild, extends, super
+        </p>
+      </article>
+    </main>
+    <footer>
+      <p>Készítette &copy; Horváth László 2025 - Neptun kód: QSS8B4</p>
+    </footer>
+  </body>
 </html>
