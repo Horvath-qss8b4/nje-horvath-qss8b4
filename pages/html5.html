@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/html5.css">
+    <title>HTML5 Elemek</title>
+</head>
+
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Főoldal</a></li>
+            <li><a href="tablazat.html">Táblázat</a></li>
+            <li><a href="html5.html" class="active">HTML5</a></li>
+            <li><a href="chartjs.html">ChartJs</a></li>
+            <li><a href="ajax.html">AJAX</a></li>
+            <li><a href="oojs.html">OOJS</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="alcim">
+            <h1>HTML5 Témák</h1>
+        </div>
+
+        <!-- Navigációs menü -->
+        <ul class="horizontal-menu">
+            <li><a href="#web-storage">Web Storage</a></li>
+            <li><a href="#web-workers">Web Workers</a></li>
+            <li><a href="#server-sent-events">Server-Sent Events</a></li>
+            <li><a href="#geolocation">Geolocation API</a></li>
+            <li><a href="#drag-drop">Drag and Drop API</a></li>
+            <li><a href="#canvas">Canvas</a></li>
+            <li><a href="#svg">SVG</a></li>
+        </ul>
+        <section id="sec">
+            <!-- Web Storage -->
+            <div class="section card" id="web-storage">
+                <h2>Web Storage</h2>
+                <input type="text" id="storageInput" placeholder="Írj ide valamit...">
+                <button onclick="saveToStorage()">Mentés</button>
+                <p id="storageResult">Nem tárolt adat</p>
+                <script>
+                    function saveToStorage() {
+                        let userInput = document.getElementById('storageInput').value;
+                        localStorage.setItem('userInput', userInput);
+                        document.getElementById('storageResult').innerText = 'Mentett adat: ' + userInput;
+                    }
+
+                    window.onload = function () {
+                        if (localStorage.getItem('userInput')) {
+                            document.getElementById('storageResult').innerText = 'Korábban mentett adat: ' + localStorage.getItem('userInput');
+                        }
+                    };
+                </script>
+            </div>
+            <hr>
+            <!-- Web Workers -->
+            <div class="section card" id="web-workers">
+                <h2>Web Worker teszt</h2>
+                <button onclick="startWorker()">Web Worker indítása</button>
+                <p id="workerOutput">Várakozás...</p>
+
+                <script>
+                    let worker;
+                    function startWorker() {
+                        // Ha a böngésző támogatja a Web Worker-t
+                        if (typeof (Worker) !== "undefined") {
+                            if (typeof (worker) == "undefined") {
+                                worker = new Worker("../js/worker.js");
+
+                                worker.onmessage = function (event) {
+                                    document.getElementById("workerOutput").innerText = event.data;
+                                };
+
+                                worker.postMessage("Hello Web Worker!");  // Üzenetet küldünk a Worker-nek
+                            }
+                        } else {
+                            document.getElementById("workerOutput").innerText = "A böngésző nem támogatja a Web Worker-t.";
+                        }
+                    }
+                </script>
+                <button class="back-to-top" onclick="scrollToTop()">Vissza az Elejére</button>
+
+            </div>
+            <hr>
+            <!-- Server-Sent Events -->
+            <div class="section card" id="server-sent-events">
+                <h2>Server-Sent Events</h2>
+
+                <div id="server">
+                    <script>
+                        if (typeof (EventSource) !== "undefined") {
+                            // Kiszolgálóval való kapcsolat létrehozása
+                            var source = new EventSource("/php/events.php");
+
+                            // Az adatokat fogadó eseménykezelő
+                            source.onmessage = function (event) {
+                                var data = JSON.parse(event.data);
+                                document.getElementById("server").innerHTML =
+                                    "Aktuális idő: " + data.time + "<br>" +
+                                    "Üzenet: " + data.message;
+                                // Az SSE kapcsolat lezárása miután egyszeri adatot küldött
+                                source.close(); // Lezárja az EventSource kapcsolatot
+                            };
+
+                            // Hibakezelő
+                            source.onerror = function (event) {
+                                console.error("Hiba történt: ", event);
+                                document.getElementById("server").innerHTML = "Hiba történt az adatfrissítés során.";
+                            };
+                        } else {
+                            // Ha a böngésző nem támogatja az SSE-t
+                            document.getElementById("server").innerHTML = "A böngésző nem támogatja a Server-Sent Events-t.";
+                        }
+                    </script>
+                </div>
+                <button class="back-to-top" onclick="scrollToTop()">Vissza az Elejére</button>
+
+            </div>
+
+            <hr>
+            <!-- Geolocation API -->
+            <div class="section card id="geolocation">
+                <h2>Geolocation API</h2>
+                <button onclick="getLocation()">A helyem lekérése</button>
+                <p id="geolocationOutput"></p>
+                <script>
+                    function getLocation() {
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(function (position) {
+                                document.getElementById("geolocationOutput").innerText = "Szélesség: " + position.coords.latitude + ", Hosszúság: " + position.coords.longitude;
+                            });
+                        } else {
+                            document.getElementById("geolocationOutput").innerText = "A geolokáció nem elérhető ezen a böngészőn.";
+                        }
+                    }
+                </script>
+                <button class="back-to-top" onclick="scrollToTop()">Vissza az Elejére</button>
+            </div>
+            <hr>
+            <!-- Drag and Drop API -->
+            <div class="section card" id="drag-drop">
+                <h2>Drag and Drop API</h2>
+                <div id="dragContainer"
+                    style="width: 200px; height: 200px; border: 1px solid black; position: relative;">
+                    <div id="draggable" draggable="true" ondragstart="drag(event)"
+                        style="width: 50px; height: 50px; background-color: red; position: absolute; cursor: grab;">
+                    </div>
+                </div>
+                <p id="dragResult">Húzzd a piros négyzetet az egérrel!</p>
+                <script>
+                    let offsetX, offsetY; // Az egér és a négyzet távolsága
+
+                    function drag(event) {
+                        let draggedElement = event.target;
+                        let rect = draggedElement.getBoundingClientRect();
+
+                        // Kiszámoljuk az egér és a négyzet bal felső sarka közötti távolságot
+                        offsetX = event.clientX - rect.left;
+                        offsetY = event.clientY - rect.top;
+
+                        event.dataTransfer.setData("text", draggedElement.id);
+                    }
+
+                    document.getElementById("dragContainer").ondrop = function (event) {
+                        event.preventDefault();
+                        let data = event.dataTransfer.getData("text");
+                        let draggedElement = document.getElementById(data);
+                        let container = event.currentTarget;
+
+                        let rect = container.getBoundingClientRect();
+
+                        // Új pozíció kiszámítása az egérpozíció alapján
+                        let newX = event.clientX - rect.left - offsetX;
+                        let newY = event.clientY - rect.top - offsetY;
+
+                        // Határok ellenőrzése
+                        newX = Math.max(0, Math.min(newX, rect.width - draggedElement.offsetWidth));
+                        newY = Math.max(0, Math.min(newY, rect.height - draggedElement.offsetHeight));
+
+                        // Beállítjuk az új pozíciót
+                        draggedElement.style.left = newX + "px";
+                        draggedElement.style.top = newY + "px";
+
+                        document.getElementById("dragResult").innerText =
+                            "A piros négyzet új helye: X: " + Math.round(newX) + ", Y: " + Math.round(newY);
+                    };
+
+                    document.getElementById("dragContainer").ondragover = function (event) {
+                        event.preventDefault();
+                    };
+                </script>
+                <button class="back-to-top" onclick="scrollToTop()">Vissza az Elejére</button>
+
+            </div>
+
+            <hr>
+            <!-- Pattogó labda a Canvas-on -->
+            <div class="section card" id="canvas">
+                <h2>Canvas - Pattogó Labda</h2>
+                <canvas id="myCanvas" width="300" height="300" style="border:1px solid #000;"></canvas>
+                <script>
+                    var canvas = document.getElementById("myCanvas");
+                    var ctx = canvas.getContext("2d");
+
+                    // Labda kezdőpozíciója és sebessége
+                    var ball = {
+                        x: Math.random() * 250 + 25, // Véletlenszerű X kezdőpozíció (25-275 között)
+                        y: Math.random() * 250 + 25, // Véletlenszerű Y kezdőpozíció (25-275 között)
+                        radius: 20,
+                        dx: (Math.random() * 4 + 2) * (Math.random() < 0.5 ? 1 : -1), // Véletlen irányú sebesség X
+                        dy: (Math.random() * 4 + 2) * (Math.random() < 0.5 ? 1 : -1), // Véletlen irányú sebesség Y
+                        color: getRandomColor() // Kezdőszín
+                    };
+
+                    function drawBall() {
+                        ctx.beginPath();
+                        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                        ctx.fillStyle = ball.color;
+                        ctx.fill();
+                        ctx.closePath();
+                    }
+
+                    function updateBall() {
+                        // Töröljük a canvas tartalmát
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                        // Mozgatjuk a labdát
+                        ball.x += ball.dx;
+                        ball.y += ball.dy;
+
+                        // Ütközés vizsgálat és színváltás
+                        if (ball.x - ball.radius <= 0 || ball.x + ball.radius >= canvas.width) {
+                            ball.dx *= -1; // Irányváltás X tengelyen
+                            ball.color = getRandomColor(); // Színváltás
+                        }
+                        if (ball.y - ball.radius <= 0 || ball.y + ball.radius >= canvas.height) {
+                            ball.dy *= -1; // Irányváltás Y tengelyen
+                            ball.color = getRandomColor(); // Színváltás
+                        }
+
+                        drawBall();
+                        requestAnimationFrame(updateBall);
+                    }
+
+                    // Véletlenszerű szín generálása
+                    function getRandomColor() {
+                        return "rgb(" + Math.floor(Math.random() * 256) + "," +
+                            Math.floor(Math.random() * 256) + "," +
+                            Math.floor(Math.random() * 256) + ")";
+                    }
+
+                    updateBall(); // Animáció indítása
+                </script>
+                <button class="back-to-top" onclick="scrollToTop()">Vissza az Elejére</button>
+            </div>
+
+            <hr>
+            <!-- Pattogó labda a Canvas-on -->
+            <h2> Vektorgrafikus formátum a képek skálázhatóak és élesek maradnak</h2>
+            <div class="section card" id="svg">
+                <svg width="200" height="200">
+                    <circle cx="100" cy="100" r="40" stroke="black" stroke-width="3" fill="blue">
+                        <!-- Pulzálás: a sugár változik 40 és 60 között -->
+                        <animate attributeName="r" from="40" to="60" dur="1s" repeatCount="indefinite"
+                            alternate="freeze" />
+                        <!-- Színváltás: kékből pirosba, majd vissza -->
+                        <animate attributeName="fill" values="blue;red;blue" dur="1s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+                <button class="back-to-top" onclick="scrollToTop()">Vissza az Elejére</button>
+            </div>
+        </section>
+        <script>
+            // Funkció, ami visszagörget az oldal tetejére
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'  // Zökkenőmentes görgetés
+                });
+            }
+        </script>
+    </main>
+
+    <footer>
+        <p>Készítette &copy; Horváth László 2025 - Neptun kód: QSS8B4</p>
+    </footer>
+</body>
+
+</html>

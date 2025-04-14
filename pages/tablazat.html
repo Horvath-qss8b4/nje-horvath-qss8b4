@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tablazat.css">
+    <title>Táblázat</title>
+</head>
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Főoldal</a></li>
+            <li><a href="tablazat.html" class="active">Táblázat</a></li>
+            <li><a href="html5.html">HTML5</a></li>
+            <li><a href="chartjs.html">ChartJs</a></li>
+            <li><a href="ajax.html">AJAX</a></li>
+            <li><a href="oojs.html">OOJS</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="h2-table">
+            <h2>Új adat felvétele:</h2>
+            <h2>Keresés:</h2>
+        </div>
+        <div id="form-keres">
+            <div id="form-block""></iframe>>
+                <form id="form">
+                    <input type="text" id="nev" placeholder="Név" required minlength="5" maxlength="50" />
+                    <input type="number" id="eletkor" placeholder="Életkor" required min="1" max="100" />
+                    <button type="submit">Hozzáadás</button>
+                </form>
+                <h5>A név hossza:  5-50, az életkor 1-100</h5>
+            </div>
+            
+            <input type="text" id="keres" placeholder="Keresés bármely oszlopban..." >
+        </div>
+    
+        <table border="1">
+            <thead>
+                <tr>
+                    <th onclick="rendez(0)">Név</th>
+                    <th onclick="rendez(1)">Életkor</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody id="tablazat-body"></tbody>
+        </table>
+    </main>
+    <footer>
+        <p>Készítette &copy; Horváth László 2025 - Neptun kód: QSS8B4</p>
+    </footer>
+    <script src="../js/tablazat.js"></script>
+</body>
+</html>
