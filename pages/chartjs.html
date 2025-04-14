@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tablazat.css">
+    <link rel="stylesheet" href="../css/chart.css">
+    <title>ChartJs bemutató</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Főoldal</a></li>
+            <li><a href="tablazat.html" ">Táblázat</a></li>
+            <li><a href=" html5.html">HTML5</a></li>
+            <li><a href="chartjs.html" class="active">ChartJs</a></li>
+            <li><a href="ajax.html">AJAX</a></li>
+            <li><a href="oojs.html">OOJS</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Első diagram -->
+        <div class="chart-container">
+            <h3>Oszlop Diagram</h3>
+            <canvas id="chart1"></canvas>
+        </div>
+
+        <!-- Második diagram -->
+        <div class="chart-container">
+            <h3>Vonal Diagram</h3>
+            <canvas id="chart2"></canvas>
+        </div>
+
+        <!-- Harmadik diagram -->
+        <div class="chart-container">
+            <h3>Kör Diagram</h3>
+            <canvas id="chart3"></canvas>
+        </div>
+
+        <!-- Negyedik diagram -->
+        <div class="chart-container">
+            <h3>Radar Diagram</h3>
+            <canvas id="chart4"></canvas>
+        </div>
+    </main>
+
+    <script>
+        // Első diagram: Oszlop diagram
+        var ctx1 = document.getElementById('chart1').getContext('2d');
+        var chart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Január', 'Február', 'Március', 'Április', 'Május'],
+                datasets: [{
+                    label: 'Eladások',
+                    data: [12, 19, 3, 5, 2],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Második diagram: Vonal diagram
+        var ctx2 = document.getElementById('chart2').getContext('2d');
+        var chart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Január', 'Február', 'Március', 'Április', 'Május'],
+                datasets: [{
+                    label: 'Növekedés',
+                    data: [3, 10, 5, 6, 8],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    fill: false,
+                    borderWidth: 2
+                }]
+            }
+        });
+
+        // Harmadik diagram: Kör diagram
+        var ctx3 = document.getElementById('chart3').getContext('2d');
+        var chart3 = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['Piros', 'Kék', 'Zöld'],
+                datasets: [{
+                    data: [30, 50, 20],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                    borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Negyedik diagram: Radar diagram
+        var ctx4 = document.getElementById('chart4').getContext('2d');
+        var chart4 = new Chart(ctx4, {
+            type: 'radar',
+            data: {
+                labels: ['P1', 'P2', 'P3', 'P4', 'P5'],
+                datasets: [{
+                    label: 'Teljesítmény',
+                    data: [3, 5, 7, 4, 6],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+    </main>
+    <footer>
+        <p>Készítette &copy; Horváth László 2025 - Neptun kód: QSS8B4</p>
+    </footer>
+</body>
+
+</html>

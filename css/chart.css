@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* A teljes magasságot kitölti */
+}
+
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Két oszlopos elrendezés */
+  gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.chart-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
