@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/tablazat.css">
+    <link rel="stylesheet" href="../css/ajax.css">
+    <link rel="stylesheet" href="../css/chart.css">
+    <title>AJAX bemutató</title>
+</head>
+
+<body>
+    <header>
+        <h1>Web-programozás-1 Előadás Házi feladat</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Főoldal</a></li>
+            <li><a href="tablazat.html" ">Táblázat</a></li>
+            <li><a href="html5.html">HTML5</a></li>
+            <li><a href="chartjs.html">ChartJs</a></li>
+            <li><a href="ajax.html" class="active">AJAX</a></li>
+            <li><a href="oojs.html">OOJS</a></li>
+        </ul>
+        <h1>AJAX CRUD Műveletek</h1>
+
+    </nav>
+    <main>
+
+        <!-- Létrehozás Section -->
+        <div id="createSection">
+            <h3>Új Adat Létrehozása</h3>
+            <input type="text" id="createName" placeholder="Név">
+            <input type="number" id="createHeight" placeholder="Magasság">
+            <input type="number" id="createWeight" placeholder="Súly">
+            <button onclick="createData()">Létrehozás</button>
+            <div id="createResult"></div>
+        </div>
+
+        <!-- Frisítés Section -->
+        <div id="updateSection">
+            <h3>Adat Módosítása</h3>
+            <input type="number" id="updateId" placeholder="ID">
+            <button onclick="getDataForId()">Adat Betöltése</button><br>
+            <input type="text" id="updateName" placeholder="Név">
+            <input type="number" id="updateHeight" placeholder="Magasság">
+            <input type="number" id="updateWeight" placeholder="Súly">
+            <button onclick="updateData()">Módosítás</button>
+            <div id="updateResult"></div>
+        </div>
+
+        <!-- Törlés Section -->
+        <div id="deleteSection">
+            <h3>Adat Törlése</h3>
+            <input type="number" id="deleteId" placeholder="ID">
+            <button onclick="deleteData()">Törlés</button>
+            <div id="deleteResult"></div>
+        </div>
+
+         <!-- Olvasás Section -->
+         <div id="readResults">
+            <h3>Adatok lekérése a szerverről</h3>
+            <button onclick="getData()">Adatok Lekérése</button>
+            <div id="dataDisplay"></div>
+            <div id="stats"></div>
+        </div>
+
+    </main>
+    <script src="../js/ajax.js"></script>
+    <footer>
+        <p>Készítette &copy; Horváth László 2025 - Neptun kód: QSS8B4</p>
+    </footer>
+</body>
+
+</html>
