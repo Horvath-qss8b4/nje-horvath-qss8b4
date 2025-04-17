@@ -1,0 +1,21 @@
+.koPapirOllo {
+    text-align: center;
+  }
+  
+  .game-board {
+    margin-top: 20px;
+  }
+  
+  .game-button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .game-button:hover {
+    background-color: #45a049;
+  }
+  

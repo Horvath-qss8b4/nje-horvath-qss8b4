@@ -1,0 +1,22 @@
+.bmiCalculator {
+    text-align: center;
+  }
+  
+  .bmiCalculator input {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+  }
+  
+  .bmiCalculator button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .bmiCalculator button:hover {
+    background-color: #45a049;
+  }
+  
